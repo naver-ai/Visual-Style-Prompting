@@ -1,0 +1,69 @@
+{
+    "device": "cuda",
+    "precomputed_path": "./precomputed",
+    "guidance_scale": 7.0,
+    "style_name_list": [
+        "cloud"
+    ],
+    "save_info": {
+        "base_exp_dir": "experiments",
+        "base_exp_name": "results"
+    },
+    "reference_info": {
+        "ref_seeds": [
+            3
+        ],
+        "ref_object_list": [
+            "a Cloud in the sky"
+        ],
+        "with_style_description": true,
+        "external_init_noise_path": false,
+        "guidance_scale": 7.0,
+        "use_negative_prompt": true
+    },
+    "inference_info": {
+        "activate_layer_indices_list": [
+            [
+                [
+                    0,
+                    0
+                ],
+                [
+                    128,
+                    140
+                ]
+            ]
+        ],
+        "inf_seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+
+        ],
+        "inf_object_list": [
+            "A photo of a dog"
+        ],
+        "with_style_description": true,
+        "negative_prompts": false,
+        "external_init_noise_path": false,
+        "attn_map_save_steps": [],
+        "guidance_scale": 7.0,
+        "use_negative_prompt": true,
+        "activate_step_indices_list": [
+            [
+                [
+                    0,
+                    49
+                ]
+            ]
+        ],
+        "use_advanced_sampling": true,
+        "use_shared_attention": false,
+        "adain_queries": true,
+        "adain_keys": true,
+        "adain_values": false
+    }
+}
