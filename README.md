@@ -54,14 +54,12 @@
 ---
 ### Citation
 ```bibtex
-@misc{jeong2024visual,
-  title={Visual Style Prompting with Swapping Self-Attention}, 
-  author={Jaeseok Jeong and Junho Kim and Yunjey Choi and Gayoung Lee and Youngjung Uh},
-  year={2024},
-  eprint={2402.12974},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV}
-  }
+@article{jeong2024visual,
+  title={Visual Style Prompting with Swapping Self-Attention},
+  author={Jeong, Jaeseok and Kim, Junho and Choi, Yunjey and Lee, Gayoung and Uh, Youngjung},
+  journal={arXiv preprint arXiv:2402.12974},
+  year={2024}
+}
 ```
 
 ---
