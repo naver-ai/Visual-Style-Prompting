@@ -11,7 +11,7 @@
 ---
 ### ✨ Requirements
 ```
-> pytorch 1.13
+> pytorch 1.13.1
 > pip install --upgrade diffusers accelerate transformers einops kornia gradio triton xformers==0.0.16
 ```
 ### ✨ Usage
