@@ -1,6 +1,6 @@
 ## 🎨 Visual Style Prompting with Swapping Self-Attention
 ### : Text-to-Stylized image with Training-free
-### ArXiv [[Paper](https://arxiv.org/abs/2402.12974)] [[Project page](https://curryjung.github.io/VisualStylePrompt)] [[HF Demo is ComingSoon 🤗](https://curryjung.github.io/VisualStylePrompt)]
+### ArXiv | 📖 [Paper](https://arxiv.org/abs/2402.12974) | ✨ [Project page](https://curryjung.github.io/VisualStylePrompt)
 
 > #### Authors &emsp;&emsp; [Jaeseok Jeong](https://drive.google.com/file/d/19I3s70cfQ45dC_JiD2kmkv0MZ8yu4kBZ/view)<sup>1,2&#42;</sup>, [Junho Kim](https://github.com/taki0112)<sup>1&#42;</sup>, [Yunjey Choi](https://www.linkedin.com/in/yunjey-choi-27b347175/?originalSubdomain=kr)<sup>1</sup>, [Gayoung Lee](https://www.linkedin.com/in/gayoung-lee-0824548a/?originalSubdomain=kr)<sup>1</sup>, [Youngjung Uh](https://vilab.yonsei.ac.kr/member)<sup>2&dagger;</sup> <br> <sub> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <sup>1</sup>NAVER AI Lab, <sup>2</sup>Yonsei University</sub> <br> <sub> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <sup>&#42;</sup>Equal Contribution, <sup>&dagger;</sup>Corresponding author</sub>
 
@@ -9,6 +9,13 @@
 > #### 🔆 Abstract
 > *In the evolving domain of text-to-image generation, diffusion models have emerged as powerful tools in content creation. Despite their remarkable capability, existing models still face challenges in achieving controlled generation with a consistent style, requiring costly fine-tuning or often inadequately transferring the visual elements due to content leakage. ***To address these challenges, we propose a novel approach, visual style prompting, to produce a diverse range of images while maintaining specific style elements and nuances. During the denoising process, we keep the query from original features while swapping the key and value with those from reference features in the late self-attention layers.*** This approach allows for the visual style prompting without any fine-tuning, ensuring that generated images maintain a faithful style. Through extensive evaluation across various styles and text prompts, our method demonstrates superiority over existing approaches, best reflecting the style of the references and ensuring that resulting images match the text prompts most accurately.*
 ---
+
+### 🤗 HuggingFace Demo (Will be soon)
+* 👉 [Default](https://huggingface.co/spaces/naver-ai/VisualStylePrompting)
+* 👉 [w/ ControlNet](https://huggingface.co/spaces/naver-ai/VisualStylePrompting_Controlnet)
+
+---
+
 ### ✨ Requirements
 ```
 > pytorch 1.13.1
