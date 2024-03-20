@@ -11,7 +11,7 @@
 ---
 
 ### 🔥 To do
-- [ ] user image in demo
+* [ ] user image in demo
 
 ---
 
