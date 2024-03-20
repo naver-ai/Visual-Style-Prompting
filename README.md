@@ -12,6 +12,7 @@
 
 ### 🔥 To do
 * [ ] user image in demo
+* [ ] gpu upgrade in demo
 
 ---
 
