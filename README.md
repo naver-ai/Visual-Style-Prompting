@@ -11,12 +11,12 @@
 ---
 
 ### 🔥 To do
-* [ ] user image in demo
-* [ ] gpu upgrade in demo
+* [x] user image in demo
+* [x] gpu upgrade in demo (Thanks for HF)
 
 ---
 
-### 🤗 HuggingFace Demo (Will be reopen)
+### 🤗 HuggingFace Demo
 * 👉 [Default](https://huggingface.co/spaces/naver-ai/VisualStylePrompting)
 * 👉 [w/ ControlNet](https://huggingface.co/spaces/naver-ai/VisualStylePrompting_Controlnet)
 
