@@ -45,8 +45,6 @@
 ```
 > python vsp_real_script.py --img_path assets/real_dir --tar_obj cat --output_num 5
 ```
-* Save your images in the `style_name.png` format.
-  * e.g.,) The starry night.png
 * For better results, you can add more style description only to inference image by directly editing code.
   * `vsp_real_script.py -> def create_prompt`
 ![real_img](./assets/git_image/vsp_real.png)
