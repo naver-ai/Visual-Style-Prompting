@@ -100,7 +100,7 @@ with torch.no_grad():
     for image_name in image_name_list:
         image_path = os.path.join(img_path, image_name)
 
-        real_img = Image.open(image_path)
+        real_img = Image.open(image_path).resize((1024, 1024), resample=Image.BICUBIC)
 
 
         style_name = image_name.split('.')[0]
