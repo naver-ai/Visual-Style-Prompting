@@ -50,6 +50,8 @@
 ```
 * For better results, you can add more style description only to inference image by directly editing code.
   * `vsp_real_script.py -> def create_prompt`
+  * Save your images in the `style_name.png` format.
+    * e.g.,) The starry night.png
 ![real_img](./assets/git_image/vsp_real.png)
 ---
 ### ✨ Misc
