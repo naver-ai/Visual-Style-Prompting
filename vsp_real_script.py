@@ -6,6 +6,7 @@ from pipelines.pipeline_stable_diffusion_xl import StableDiffusionXLPipeline
 from pipelines.inverted_ve_pipeline import create_image_grid
 from utils import memory_efficient, init_latent
 import argparse
+from transformers import Blip2Processor, Blip2ForConditionalGeneration
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 if device == 'cpu':
@@ -44,9 +45,16 @@ def create_prompt(style_name):
     if style_name in pre_prompt_dicts.keys():
         return pre_prompt_dicts[style_name]
     else:
-        return ("{prompt}", "") # base_prompt, negative_prompt
+        return None, None
 
 
+def blip_inf_prompt(image):
+    inputs = blip_processor(images=image, return_tensors="pt").to(device, torch.float16)
+
+    generated_ids = blip_model.generate(**inputs)
+    generated_text = blip_processor.batch_decode(generated_ids, skip_special_tokens=True)[0].strip()
+
+    return generated_text
 
 
 tar_seeds = create_number_list(args.output_num)
@@ -75,6 +83,9 @@ pipe = StableDiffusionXLPipeline.from_pretrained("stabilityai/stable-diffusion-x
 print('SDXL')
 memory_efficient(pipe, device)
 
+blip_processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
+blip_model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b", torch_dtype=torch_dtype).to(device)
+
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 
 str_activate_layer, str_activate_step = pipe.activate_layer(
@@ -97,8 +108,12 @@ with torch.no_grad():
         latents = []
 
         base_prompt, negative_prompt = create_prompt(style_name)
-        ref_prompt = base_prompt.replace("{prompt}", style_name)
-        inf_prompt = base_prompt.replace("{prompt}", tar_obj)
+        if base_prompt is not None:
+            ref_prompt = base_prompt.replace("{prompt}", style_name)
+            inf_prompt = base_prompt.replace("{prompt}", tar_obj)
+        else:
+            ref_prompt = blip_inf_prompt(real_img)
+            inf_prompt = tar_obj
 
         for tar_seed in tar_seeds:
             latents.append(init_latent(model=pipe, device_name=device, dtype=torch_dtype, seed=tar_seed))
