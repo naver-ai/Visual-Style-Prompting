@@ -13,9 +13,6 @@
 ### 🔥 To do
 * [x] user image in demo
 * [x] gpu upgrade in demo (Thanks for HF)
-  * There is an issue about HF gpu, so HF is currently fixing it.
-  * For this reason, the features for user image styles have been implemented, but not executed in the demo.
-  * In now, Try `vsp_real_script.py`
 
 ---
 
