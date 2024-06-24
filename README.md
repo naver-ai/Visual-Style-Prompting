@@ -11,6 +11,7 @@
 ---
 
 ### 🔥 To do
+* [x] color calibration to use a real image as reference
 * [x] user image in demo
 * [x] gpu upgrade in demo (Thanks for HF)
 
@@ -43,7 +44,7 @@
 
 #### 👉 w/ User image
 ```
-> python vsp_real_script.py --img_path assets/real_dir --tar_obj cat --output_num 5
+> python vsp_real_script.py --img_path assets/real_dir --tar_obj cat --output_num 5 --color_cal_start_t 150 --color_cal_window_size 50
 ```
 * For better results, you can add more style description only to inference image by directly editing code.
   * `vsp_real_script.py -> def create_prompt`

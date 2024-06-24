@@ -1,5 +1,6 @@
 import torch
-from diffusers import DDIMScheduler
+from schedulers.scheduling_ddim import DDIMScheduler
+
 from PIL import Image
 import os
 from pipelines.pipeline_stable_diffusion_xl import StableDiffusionXLPipeline
@@ -19,7 +20,10 @@ parser.add_argument('--img_path', type=str, default='./assets/real_dir')
 parser.add_argument('--tar_obj', type=str, default='cat')
 parser.add_argument('--guidance_scale', type=float, default=7.0)
 parser.add_argument('--output_num', type=int, default=5)
+parser.add_argument('--result_dir', type=str, default='results')
 parser.add_argument('--activate_step', type=int, default=50)
+parser.add_argument('--color_cal_start_t', type=int, default=150, help='start t for color calibration')
+parser.add_argument('--color_cal_window_size', type=int, default=50, help='window size for color calibration')
 
 args = parser.parse_args()
 
@@ -64,9 +68,10 @@ img_path = args.img_path
 tar_obj = args.tar_obj
 guidance_scale = args.guidance_scale
 
-results_dir = 'results'
-if not os.path.exists(results_dir):
-    os.makedirs(results_dir)
+
+if not os.path.exists(args.result_dir):
+    os.makedirs(args.result_dir)
+result_dir = args.result_dir
 
 
 image_name_list = os.listdir(img_path)
@@ -87,6 +92,9 @@ blip_processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
 blip_model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b", torch_dtype=torch_dtype).to(device)
 
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
+
+pipe.scheduler.fix_traj_t_start = args.color_cal_start_t
+pipe.scheduler.fix_traj_t_end = args.color_cal_start_t - args.color_cal_window_size
 
 str_activate_layer, str_activate_step = pipe.activate_layer(
                         activate_layer_indices=[[0, 0], [128, 140]], 
@@ -132,7 +140,7 @@ with torch.no_grad():
             image=real_img
         )[0]
         # [real image, fake1, fake2, ... ]
-        save_path = os.path.join(results_dir, "{}_{}.png".format(style_name, tar_obj))
+        save_path = os.path.join(result_dir, "{}_{}.png".format(style_name, tar_obj))
 
         n_row = 1
         n_col = len(tar_seeds)

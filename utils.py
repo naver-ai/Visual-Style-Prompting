@@ -1,7 +1,13 @@
 import torch
 from diffusers.utils.torch_utils import randn_tensor
 
-import json, os, cv2
+import json, os
+
+try:
+    import cv2
+except:
+    pass
+
 from PIL import Image
 import numpy as np
 
