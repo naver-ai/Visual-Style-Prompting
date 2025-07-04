@@ -1,4 +1,4 @@
-## 🎨 Visual Style Prompting with Swapping Self-Attention
+## 🎨 Visual Style Prompting with Swapping Self-Attention (ICCV 2025)
 ### : Text-to-Stylized image with Training-free
 ### ArXiv | 📖 [Paper](https://arxiv.org/abs/2402.12974) | ✨ [Project page](https://curryjung.github.io/VisualStylePrompt)
 
